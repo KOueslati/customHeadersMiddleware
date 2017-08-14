@@ -103,10 +103,13 @@
     <Compile Include="Controller\UsersController.cs" />
     <Compile Include="Controller\DatasController.cs" />
     <Compile Include="Middleware\ContentTypeHeaderOption.cs" />
+    <Compile Include="Middleware\ContentTypeHeaderOptionExtensiens.cs" />
     <Compile Include="Middleware\CustomHeadersMiddleware.cs" />
     <Compile Include="Middleware\CustomHeadersMiddlewareExtensions.cs" />
     <Compile Include="Middleware\HeaderOption.cs" />
     <Compile Include="Middleware\IHeaderOption.cs" />
+    <Compile Include="Middleware\Policies\PolicyHeaderCollection.cs" />
+    <Compile Include="Middleware\Policies\PolicyHeaderCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
