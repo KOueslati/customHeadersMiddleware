@@ -3,8 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Web.Http;
 using WebApplication.Middleware;
-
-
+using WebApplication.Middleware.Policies;
 using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
 namespace WebApplication
@@ -21,7 +20,9 @@ namespace WebApplication
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional });
 
-            appBuilder.UseCostumHeadersMiddleware(ContentTypeHeaderOption.Nosniff());
+            appBuilder.UseCostumHeadersMiddleware(
+                new PolicyHeaderCollection().AddHeadersSecurity()
+                );
 
             appBuilder.UseWebApi(config);
         }
