@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace WebApplication.Controller
 {
-    public class DataController : ApiController
+    [RoutePrefix("users")]
+    public class UsersController : ApiController
     {
         [HttpGet]
-        public IHttpActionResult GetData()
+        public IHttpActionResult  GetUsers()
         {
             var obj = new { firstname = "khaled", lastname = "oueslati" };
 

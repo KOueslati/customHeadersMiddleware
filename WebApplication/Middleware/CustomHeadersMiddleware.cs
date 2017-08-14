@@ -9,10 +9,12 @@ namespace WebApplication.Middleware
     public class CustomHeadersMiddleware
     {
         private AppFunc _next;
+        private readonly IHeaderOption _headerOption;
 
-        public CustomHeadersMiddleware(AppFunc next)
+        public CustomHeadersMiddleware(AppFunc next, IHeaderOption headerOption)
         {
             _next = next;
+            _headerOption = headerOption;
         }
 
         public async Task Invoke(IDictionary<string, object> env)
@@ -24,8 +26,8 @@ namespace WebApplication.Middleware
                 throw new System.ArgumentNullException(nameof(context));
             }
 
-            context.Response.Headers.Add("X-Content-Type-Options", new string[] { "nosniff" });
-
+            context.Response.Headers.Add(_headerOption.Header, new string[] { _headerOption.Value });
+            
             await _next(env);
         }
     }

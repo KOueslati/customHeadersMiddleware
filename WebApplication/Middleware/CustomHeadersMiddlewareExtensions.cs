@@ -12,9 +12,9 @@ namespace Owin
         /// Adds middleware to web application pipeline to add security headers to response
         /// </summary>
         /// <param name="appBuilder">the application builder passed to the Config method.</param>
-        public static void UseCostumHeadersMiddleware(this IAppBuilder appBuilder)
+        public static void UseCostumHeadersMiddleware(this IAppBuilder appBuilder, IHeaderOption headerOption)
         {
-            appBuilder.Use<CustomHeadersMiddleware>();
+            appBuilder.Use<CustomHeadersMiddleware>(headerOption);
         }
     }
 }
